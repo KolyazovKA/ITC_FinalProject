@@ -18,6 +18,7 @@ class UserStatus(models.Model):
     def __str__(self):
         return self.status_name
 
+
 class User(models.Model):
     username = models.CharField(
         max_length=20,
@@ -33,6 +34,8 @@ class User(models.Model):
     )
     image = models.ImageField(
         upload_to='user_image',
+        null=True,
+        blank=True
     )
 
     status = models.OneToOneField('UserStatus', on_delete=models.CASCADE)
