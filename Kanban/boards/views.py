@@ -9,6 +9,10 @@ class TaskDetail(DetailView):
     model = Task
     context_object_name = 'task'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(task=self.object)
+        return context
 
 class TaskList(ListView):
     template_name = 'board/task_list.html'
@@ -51,6 +55,11 @@ class BoardDetail(DetailView):
     model = Board
     context_object_name = 'board'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = Task.objects.filter(board=self.object)
+        return context
+
 
 class BoardUpdate(UpdateView):
     template_name = 'board/board_update.html'
@@ -68,6 +77,8 @@ class BoardCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('board_list')
+
+
 class BoardDelete(DeleteView):
     template_name = 'board/board_delete.html'
     model = Board

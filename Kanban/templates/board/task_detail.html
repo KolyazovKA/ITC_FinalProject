@@ -17,6 +17,16 @@
         <p>Исполнитель: {{ task.employe }}</p>
         <hr>
         <p>Доска: {{ task.board.name }}</p>
+        <div class="comments">
+        <h2>Комментарии:</h2>
+            {% for comment in comments %}
+                <hr>
+                <p>{{ comment.user }} ({{ comment.created_at }})</p>
+                <p>{{ comment.text_comment }}</p>
+            {% endfor %}
+
+
+        </div>
 
         <a href="{% url 'task_list' %}"> Назад к списку задач</a>
         <a href="{% url 'task_update' task.pk %}"> Редактировать</a>
