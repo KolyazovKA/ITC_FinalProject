@@ -1,8 +1,21 @@
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, DeleteView
+from rest_framework import viewsets
 
+from boards import serializers
 from boards.models import Task, Board, Comment
 
+class BoardAPI(viewsets.ModelViewSet):
+    queryset = Board.objects.all()
+    serializer_class = serializers.Board
+
+class TaskAPI(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = serializers.Task
+
+class CommentAPI(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = serializers.Comment
 
 class TaskDetail(DetailView):
     template_name = 'board/task_detail.html'

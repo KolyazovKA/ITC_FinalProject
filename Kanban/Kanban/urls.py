@@ -16,6 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from rest_framework.routers import DefaultRouter
+
+from boards import views
+
+router = DefaultRouter()
+
+router.register('board', views.BoardAPI, basename='board')
+router.register('task', views.TaskAPI, basename='task')
+router.register('comment', views.CommentAPI, basename='comment')
 
 
 urlpatterns = [
@@ -23,7 +33,7 @@ urlpatterns = [
     path('', include('users.urls')),
     path('', include('boards.urls')),
 
-    # path('schema/', SpectacularAPIView.as_view(), name='schema'),
-    # path('swagger/', SpectacularSwaggerView.as_view(url_name='schema')),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('swagger/', SpectacularSwaggerView.as_view(url_name='schema')),
 
-]
+] + router.urls
