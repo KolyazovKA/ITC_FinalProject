@@ -1,6 +1,6 @@
-from django.utils import timezone
 from django.db import models
-from datetime import date
+from django.utils import timezone
+
 from users.models import User
 
 

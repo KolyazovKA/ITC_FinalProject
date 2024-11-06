@@ -3,7 +3,7 @@
 {% block title %} Профиль {{ user.first_name }} {{ user.last_name }}{% endblock %}
 
 {% block content %}
-    <img class="avatar_img" src="{{ user.image }}">
+    <img class="avatar_img" src="{{ user.image.url }}">
     <h3>{{ user.first_name }} {{ user.last_name }}</h3>
     <h4>{{ user.status.status_name }}</h4>
 {% endblock %}

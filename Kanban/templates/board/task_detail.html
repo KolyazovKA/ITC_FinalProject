@@ -1,0 +1,26 @@
+{% extends '../base.html' %}
+
+{% block title %}{{ task.name }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="info">
+        <h1>{{ task.name }}</h1>
+        <hr>
+        <h5>Описание: {{ task.description }}</h5>
+        <hr>
+        <p>Дата создания: {{ task.created_at }}</p>
+        <hr>
+        <p>Commit: {{ task.commit_url }}</p>
+        <hr>
+        <p>Исполнитель: {{ task.employe }}</p>
+        <hr>
+        <p>Доска: {{ task.board.name }}</p>
+
+        <a href="{% url 'task_list' %}"> Назад к списку задач</a>
+        <a href="{% url 'task_update' task.pk %}"> Редактировать</a>
+        <a href="{% url 'task_delete' task.pk %}"> Удалить</a>
+    </div>
+
+{% endblock %}
