@@ -12,7 +12,7 @@ urlpatterns = [
     path('board_detail/<int:pk>/', views.BoardDetail.as_view(), name='board_detail'),
     path('board_delete/<int:pk>/', views.BoardDelete.as_view(), name='board_delete'),
     path('board_update/<int:pk>/', views.BoardUpdate.as_view(), name='board_update'),
-    path('comment_create/', views.CommentCreate.as_view(), name='comment_create'),
+    path('comment_create/<int:pk>', views.CommentCreate.as_view(), name='comment_create'),
     path('comment_update/<int:pk>/', views.CommentUpdate.as_view(), name='comment_update'),
     path('comment_delete/<int:pk>/', views.CommentDelete.as_view(), name='comment_delete'),
 ]

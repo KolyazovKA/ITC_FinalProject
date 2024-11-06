@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить {{ board.name }} {% endblock %}
+
+{% block content %}
+    <h1>удалить {{ board.name }}</h1>
+    <p>вы точно уверены?</p>
+    <form method="post">
+        {% csrf_token %}
+    <button type="submit">удалить</button>
+    <a href="{% url 'board_detail' board.pk %}">отмена</a>
+    </form>
+{% endblock %}

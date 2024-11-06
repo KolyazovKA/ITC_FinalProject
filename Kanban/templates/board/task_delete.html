@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Удалить {{ task.name }} {% endblock %}
+{% block title %}удалить {{ task.name }} {% endblock %}
 
 {% block content %}
-    <h1>Удалить {{ task.name }}</h1>
-    <p>Вы точно уверены?</p>
-    <form method="POST">
+    <h1>удалить {{ task.name }}</h1>
+    <p>вы точно уверены?</p>
+    <form method="post">
         {% csrf_token %}
-    <button type="submit">Удалить</button>
-    <a href="{% url 'task_detail' task.pk %}">Отмена</a>
+    <button type="submit">удалить</button>
+    <a href="{% url 'task_detail' task.pk %}">отмена</a>
     </form>
 {% endblock %}

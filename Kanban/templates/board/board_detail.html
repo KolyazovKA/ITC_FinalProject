@@ -1,0 +1,28 @@
+{% extends '../base.html' %}
+
+{% block title %}{{ board.name }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="info">
+        <h1>{{ board.name }}</h1>
+        <hr>
+        <h5>Описание: {{ board.description }}</h5>
+        <hr>
+
+        {% for task in tasks %}
+            <div class="task_info">
+                <h5>{{ task.name }}</h5>
+                <p>{{ task.created_at }}</p>
+                <a href="{% url 'task_detail' task.pk %}">Детали</a>
+            </div>
+            <hr>
+        {% endfor %}
+
+        <a href="{% url 'board_list' %}"> Назад к списку досок</a>
+        <a href="{% url 'board_update' board.pk %}"> Редактировать</a>
+        <a href="{% url 'board_delete' board.pk %}"> Удалить</a>
+    </div>
+
+{% endblock %}

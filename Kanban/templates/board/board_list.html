@@ -13,17 +13,16 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Задачи</h1>
+    <h1>Доски</h1>
     <div class="row">
-        {% for task in tasks %}
-            <div class="task_info">
-                <h5>{{ task.name }}</h5>
-                <p>{{ task.created_at }}</p>
-                <a href="{% url 'task_detail' task.pk %}">Детали</a>
+        {% for board in boards %}
+            <div class="board_info">
+                <h5>{{ board.name }}</h5>
+                <a href="{% url 'board_detail' board.pk %}">Детали</a>
             </div>
             <hr>
         {% endfor %}
         <hr>
-        <a href="{% url 'task_create' %}">Добавить задачу</a>
+        <a href="{% url 'board_create' %}">Добавить доску</a>
     </div>
 {% endblock %}

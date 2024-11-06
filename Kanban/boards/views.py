@@ -43,7 +43,7 @@ class TaskDelete(DeleteView):
 class BoardList(ListView):
     template_name = 'board/board_list.html'
     model = Board
-    context_object_name = 'tasks'
+    context_object_name = 'boards'
 
 
 class BoardDetail(DetailView):
@@ -66,7 +66,8 @@ class BoardCreate(CreateView):
     model = Board
     fields = ['name', 'description']
 
-
+    def get_success_url(self):
+        return reverse_lazy('board_list')
 class BoardDelete(DeleteView):
     template_name = 'board/board_delete.html'
     model = Board
